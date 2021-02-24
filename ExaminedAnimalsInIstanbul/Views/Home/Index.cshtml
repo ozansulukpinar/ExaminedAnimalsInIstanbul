@@ -1,0 +1,135 @@
+﻿@model ExaminedAnimalsInIstanbul.Models.SearchViewModel;
+
+@{
+    ViewData["Title"] = "İstanbul'da Muayene Edilen Hayvanlar";
+
+    var data = TempData["Animals"] as List<AnimalDto>;
+
+    if (TempData["SearchedAnimals"] != null)
+        data = TempData["SearchedAnimals"] as List<AnimalDto>;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body background="images/catanddog.png">
+    <center>
+        <br />
+        <h1>İstanbul'da Muayene Edilen Hayvanlar</h1>
+        <br />
+
+        <form asp-controller="Home" asp-action="Index">
+            <div class="form-group">
+                <div class="w-20 line">
+                    <label>Filtrele:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+
+                <div class="w-25 line">
+                    <label asp-for="SpeciesName">Tür Adı</label>
+                    <select class="form-control" asp-for="SpeciesName"
+                        asp-items="@(new SelectList(ViewBag.SpeciesName, "SpeciesName","SpeciesName"))"></select>
+                </div>
+
+                <div class="w-25 line">
+                    <label asp-for="MainColour">Ana Renk</label>
+                    <select class="form-control" asp-for="MainColour"
+                        asp-items="@(new SelectList(ViewBag.MainColour, "MainColour","MainColour"))"></select>
+                </div>
+
+                <div class="w-25 line">
+                    <label asp-for="Gender">Cinsiyet</label>
+                    <select class="form-control" asp-for="Gender"
+                        asp-items="@(new SelectList(ViewBag.Gender, "Gender","Gender"))"></select>
+                </div>
+
+                <div class="w-20 line">
+                    <input type="submit" class="form-control search" value="Ara" />
+                </div>
+            </div>
+        </form>
+
+        <div class="wrapper1">
+            <div class="div1"></div>
+        </div>
+        <div class="wrapper2">
+            <div class="div2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ad</th>
+                            <th>Yaş</th>
+                            <th>Doğum Tarihi</th>
+                            <th>Sağlık Karnesi</th>
+                            <th>Kısırlık</th>
+                            <th>Davranış</th>
+                            <th>Küpe</th>
+                            <th>Uygulama Tarihi</th>
+                            <th>Tür Adı</th>
+                            <th>Irk Adı</th>
+                            <th>Hayvan Mizaç Adı</th>
+                            <th>Ana Renk</th>
+                            <th>Tali Renk 1</th>
+                            <th>Tali Renk 2</th>
+                            <th>İşaretleme Adı</th>
+                            <th>Geliş Şekli</th>
+                            <th>Cinsiyet</th>
+                            <th>İşlem Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in data)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Age</td>
+                                <td>@item.BirthDate</td>
+                                <td>@item.HealthRecord</td>
+                                <td>@item.Infertility</td>
+                                <td>@item.Behavior</td>
+                                <td>@item.Earring</td>
+                                <td>@item.AppliedDate</td>
+                                <td>@item.SpeciesName</td>
+                                <td>@item.RaceName</td>
+                                <td>@item.CharacterName</td>
+                                <td>@item.MainColour</td>
+                                <td>@item.SecondaryColour1</td>
+                                <td>@item.SecondaryColour2</td>
+                                <td>@item.MarkingName</td>
+                                <td>@item.ReasonForComing</td>
+                                <td>@item.Gender</td>
+                                <td>@item.ProcessDate</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Ad</th>
+                            <th>Yaş</th>
+                            <th>Doğum Tarihi</th>
+                            <th>Sağlık Karnesi</th>
+                            <th>Kısırlık</th>
+                            <th>Davranış</th>
+                            <th>Küpe</th>
+                            <th>Uygulama Tarihi</th>
+                            <th>Tür Adı</th>
+                            <th>Irk Adı</th>
+                            <th>Hayvan Mizaç Adı</th>
+                            <th>Ana Renk</th>
+                            <th>Tali Renk 1</th>
+                            <th>Tali Renk 2</th>
+                            <th>İşaretleme Adı</th>
+                            <th>Geliş Şekli</th>
+                            <th>Cinsiyet</th>
+                            <th>İşlem Tarihi</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>

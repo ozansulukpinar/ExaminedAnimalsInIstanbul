@@ -1,0 +1,47 @@
+table{
+    border-collapse: collapse;
+}
+
+td, th{
+    border: 1px solid black;
+    text-align: center;
+    white-space: nowrap;
+    padding: 3px;
+}
+
+th{
+    background-color: #07549d;
+    color:white;
+}
+
+.wrapper1, .wrapper2{ 
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.wrapper1{ 
+    height: 20px;
+}
+
+.div1{ 
+    height: 20px;
+}
+
+.div2{ 
+    overflow: none;
+    height: 300px;
+}
+
+h1{
+    color: #07549d;
+}
+
+.line{
+    display: inline-block;
+}
+
+.search{
+    background-color: #07549d;
+    color: white;
+}
